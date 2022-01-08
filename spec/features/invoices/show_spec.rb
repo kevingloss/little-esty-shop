@@ -43,4 +43,11 @@ RSpec.describe "Merchant invoice show" do
       expect(page).to have_content("#{invoice_item.status}")
     end
   end
+
+  it 'I see the total revenue that will be generated from all of my items on the invoice' do
+    visit merchant_invoice_path(@merchant_1, @invoice_4)
+    expect(page).to have_content("Total Revenue")
+    # expect(page).to have_content(@invoice_4.total_revenue)
+    save_and_open_page
+  end
 end
