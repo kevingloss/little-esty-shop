@@ -69,6 +69,8 @@ RSpec.describe 'Admin Merchant Index' do
           expect(page).to have_link("#{merchant.name}")
           expect(page).to have_content(h.number_to_currency(merchant.revenue/100, precision: 0))
         end
+      end
+    end
 
 
     it 'shows a link to create a new merchant' do
@@ -77,7 +79,7 @@ RSpec.describe 'Admin Merchant Index' do
       click_link "Create New Merchant"
       expect(current_path).to eq('/admin/merchants/new')
     end
-    
+
     it 'next to each merchant name I see a button to disable or enable that merchant.' do
       visit "/admin/merchants"
 
