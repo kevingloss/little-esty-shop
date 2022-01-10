@@ -29,7 +29,7 @@ RSpec.describe Invoice do
 
       #Expected result ordered oldest to newest
 
-      expect(Invoice.incomplete_invoices).to eq(expected_result.reverse)
+      expect(Invoice.incomplete_invoices).to eq(expected_result)
     end
   end
 end
