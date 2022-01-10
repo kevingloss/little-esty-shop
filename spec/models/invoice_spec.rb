@@ -14,9 +14,27 @@ RSpec.describe Invoice do
   end
 
   it '#total_revenue' do
-    @merchants
-    @invoice_4
-
+    
     expect(@invoice_4.total_revenue).to eq(124800)
+  end 
+  
+  describe 'models' do
+    it '#incomplete_invoices' do
+      expected_result = [@invoice_1, @invoice_2, @invoice_3,
+                         @invoice_4, @invoice_5, @invoice_6,
+                         @invoice_7, @invoice_8, @invoice_9,
+                         @invoice_10, @invoice_11, @invoice_12,
+                         @invoice_13, @invoice_14, @invoice_15,
+                         @invoice_19, @invoice_20]
+
+      #Expected result ordered oldest to newest
+
+      expect(Invoice.incomplete_invoices).to eq(expected_result.reverse)
+    end
+    
+    it '#total_revenue' do
+     expect(@invoice_1.total_revenue).to eq(16)
+     expect(@invoice_2.total_revenue).to eq(23)
+    end
   end
 end

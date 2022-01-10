@@ -4,6 +4,7 @@ class Merchant < ApplicationRecord
   has_many :invoices, through: :invoice_items
   has_many :customers, through: :invoices
   validates :name, presence: true
+  enum merchant_status: { disabled: 0, enabled: 1}
 
   def top_five_customers
     customers.joins(:transactions)
@@ -28,5 +29,22 @@ class Merchant < ApplicationRecord
          .select("items.*, sum(quantity * invoice_items.unit_price) as revenue")
          .order(revenue: :desc)
          .limit(5)
+  end
+
+  def self.top_five_merchants
+          joins(invoice_items: :transactions)
+         .where(transactions: {result: "success"})
+         .group(:id)
+         .select("merchants.*, sum(quantity * invoice_items.unit_price) as revenue")
+         .order(revenue: :desc)
+         .limit(5)
+  end
+
+  def top_merchant_best_day #NEED TO CHECK AND SEE THAT THIS IS CORRECTLY TESTING THE BEST DAYS
+    invoices.joins(:transactions)
+          .select("invoices.*, sum(quantity) as total_sales")
+          .group(:id)
+          .order(total_sales: :desc)
+          .first.updated_at
   end
 end

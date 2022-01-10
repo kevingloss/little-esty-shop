@@ -9,5 +9,12 @@ class Invoice < ApplicationRecord
 
   def total_revenue
     total = invoice_items.sum("unit_price * quantity")
+    items.sum(:unit_price)
+  end 
+
+  def self.incomplete_invoices
+    joins(:invoice_items)
+    .where.not(invoice_items: {status: "shipped"})
+    .order(created_at: :desc)
   end
 end
