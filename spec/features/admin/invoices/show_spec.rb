@@ -21,13 +21,24 @@ RSpec.describe 'Admin Invoices Show' do
 
     it 'I can update the invoice status' do
       visit "/admin/invoices/#{@invoice_1.id}"
-      
+
       expect(page).to have_content("pending")
       select "in progress", from: "invoice_status"
       click_on "Update Invoice Status"
 
       expect(current_path).to eq("/admin/invoices/#{@invoice_1.id}")
       expect(page).to have_content("#{@invoice_1.status}")
+    end
+
+    it 'displays all of the items and their attributes' do
+      visit "/admin/invoices/#{@invoice_1.id}"
+
+      within "#invoice_show-#{@invoice_1.id}" do
+        expect(page).to have_content("#{@invoice_1.invoice_items.first.item.name}")
+        expect(page).to have_content("#{@invoice_1.invoice_items.first.quantity}")
+        expect(page).to have_content("#{@invoice_1.invoice_items.first.unit_price}")
+        expect(page).to have_content("#{@invoice_1.invoice_items.first.status}")
+      end
     end
   end
 end
