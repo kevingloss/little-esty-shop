@@ -38,10 +38,11 @@ RSpec.describe 'Admin Dashboard Index' do
     it 'shows top 5 customers' do
       visit admin_root_path
 
-      expect(@customer_4.first_name).to appear_before(@customer_5.first_name)
-      expect(@customer_5.first_name).to appear_before(@customer_6.first_name)
-      expect(@customer_6.first_name).to appear_before(@customer_3.first_name)
-      expect(@customer_3.first_name).to appear_before(@customer_2.first_name)
+      expect(page).to have_content(@customer_4.first_name)
+      expect(page).to have_content(@customer_5.first_name)
+      expect(page).to have_content(@customer_6.first_name)
+      expect(page).to have_content(@customer_3.first_name)
+      expect(page).to have_content(@customer_2.first_name)
     end
 
     it 'shows the number of purchases for the top five customers' do
@@ -55,7 +56,7 @@ RSpec.describe 'Admin Dashboard Index' do
       expect(page).to_not have_content("Customer 1")
     end
 
-    it 'shows a link to create a new merchant' do 
+    it 'shows a link to create a new merchant' do
 
 
     end

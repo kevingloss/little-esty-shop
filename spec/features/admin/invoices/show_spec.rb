@@ -16,7 +16,7 @@ RSpec.describe 'Admin Invoices Show' do
     it 'I see the total revenue that will be generated from this invoice' do
       visit "/admin/invoices/#{@invoice_1.id}"
 
-      expect(page).to have_content("Total revenue generated:#{@invoice_1.total_revenue}")
+      expect(page).to have_content("Total revenue generated: #{@invoice_1.total_revenue}")
     end
 
     it 'I can update the invoice status' do
