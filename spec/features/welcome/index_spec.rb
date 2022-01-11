@@ -5,7 +5,7 @@ RSpec.describe 'welcome page', type: :feature do
     it 'shows the name of the project' do
       visit root_path
 
-      expect(page).to have_content("little-esty-shop")
+      expect(page).to have_content("Little Esty Shop!")
     end
   end
 end
