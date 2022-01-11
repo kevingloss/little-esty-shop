@@ -1,10 +1,10 @@
 
-<h1>Invoice #:<%= @invoice.id %></h1>
-<p>Invoice Status:<%= @invoice.status %></p>
-<p>Invoice created at:<%= @invoice.created_at.strftime("%A, %B %d, %Y") %></p>
-<p>Customer first name:<%= @invoice.customer.first_name %></p>
-<p>Customer last name:<%= @invoice.customer.last_name %></p>
-<p>Total revenue generated:<%= @invoice.total_revenue %> </p>
+<h1>Invoice #: <%= @invoice.id %></h1>
+<p>Invoice Status: <%= @invoice.status %></p>
+<p>Invoice created at: <%= @invoice.created_at.strftime("%A, %B %d, %Y") %></p>
+<p>Customer first name: <%= @invoice.customer.first_name %></p>
+<p>Customer last name: <%= @invoice.customer.last_name %></p>
+<p>Total revenue generated: <%= @invoice.total_revenue %> </p>
 <p>
   <%= form_with model: [:admin, @invoice], local: true do |form| %>
     <%= form.label "Status:" %>
@@ -16,9 +16,9 @@
 
 <% @invoice.invoice_items.each do |invoice_item| %>
 <section id="invoice_show-<%=@invoice.id%>">
-    <p>Item name<%= invoice_item.item.name %></p>
-    <p>Item quantity<%= invoice_item.quantity %></p>
-    <p>Item name<%= invoice_item.unit_price %></p>
-    <p>Item name<%= invoice_item.status %></p>
+    <p>Item name: <%= invoice_item.item.name %></p>
+    <p>Item quantity: <%= invoice_item.quantity %></p>
+    <p>Item name: <%= invoice_item.unit_price %></p>
+    <p>Item name: <%= invoice_item.status %></p>
   </section>
 <% end %>
