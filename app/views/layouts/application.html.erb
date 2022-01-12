@@ -9,6 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% @facade = WelcomeFacade.new %>
     <p>Repo name: <%= @facade.repo_info.name %></p>
+
+    <% @facade.team_info.logins.each do |login| %>
+      <p><%="User Login: #{login}" %></p>
+    <% end %>
+
   </head>
 
   <body>
