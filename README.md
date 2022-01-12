@@ -4,7 +4,7 @@
 Kelly Anderson, Craig Cardwell, Robin Dittrich, Kevin Gloss, David Kassin
 
 ## Databases
-![Screen Shot 2022-01-04 at 3 28 49 PM](https://user-images.githubusercontent.com/89048720/148137746-d701dd9e-8e0d-40bb-a747-a8392e1a851d.png)
+<img width="788" alt="Screen Shot 2022-01-12 at 8 45 09 AM" src="https://user-images.githubusercontent.com/89048720/149183923-2e245216-e62a-40e8-8974-1ce1b661382a.png">
 
 ## Background and Description
 
