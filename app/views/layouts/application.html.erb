@@ -11,9 +11,8 @@
     <p>Repo name: <%= @facade.repo_info.name %></p>
 
     <% @facade.team_info.logins.each do |login| %>
-      <p><%="User Login: #{login}" %></p>
+      <p><%="User Login: #{login[0]} Commit Count: #{login[1]} " %></p>
     <% end %>
-
   </head>
 
   <body>
