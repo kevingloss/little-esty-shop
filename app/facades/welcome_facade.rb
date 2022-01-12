@@ -7,10 +7,10 @@ class WelcomeFacade
     Repo.new(service.repo)
   end
 
-  def team_info
-  wip = Team.new(service.contributor)
-  # require "pry"; binding.pry
-  end
+  # def team_info
+  # wip = Team.new(service.contributor)
+  # # require "pry"; binding.pry
+  # end
 
   def service
     EstyService.new
