@@ -9,11 +9,12 @@ class Team
     team = ['kevingloss', 'Dittrir', 'kanderson852', 'dkassin', 'Eagerlearn']
     team_logins = []
     data.each do |contributor|
+      require "pry"; binding.pry
+      inter = []
       if team.include?(contributor[:login])
-        inter = []
-        inter << contributor[:login]
-        inter << contributor[:contributions]
-        team_logins << inter
+      inter << contributor[:login]
+      inter << contributor[:contributions]
+      team_logins << x
       end
     end
     team_logins

@@ -8,7 +8,8 @@ class WelcomeFacade
   end
 
   def team_info
-    Team.new(service.contributor)
+  wip = Team.new(service.contributor)
+  # require "pry"; binding.pry
   end
 
   def service
