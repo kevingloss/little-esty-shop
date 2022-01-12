@@ -7,8 +7,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= @facade = WelcomeFacade.new %>
+    <% @facade = WelcomeFacade.new %>
     <p>Repo name: <%= @facade.repo_info.name %></p>
+    <p>User Logins: <%= @facade.team_info.logins %></p>
+
   </head>
 
   <body>
