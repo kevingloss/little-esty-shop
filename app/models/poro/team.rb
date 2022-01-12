@@ -10,7 +10,10 @@ class Team
     team_logins = []
     data.each do |contributor|
       if team.include?(contributor[:login])
-        team_logins.push(contributor[:login])
+        inter = []
+        inter << contributor[:login]
+        inter << contributor[:contributions]
+        team_logins << inter
       end
     end
     team_logins
