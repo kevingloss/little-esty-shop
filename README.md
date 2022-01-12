@@ -1,14 +1,13 @@
 # Little Esty Shop
 
-## Group Members
-Kelly Anderson, Craig Cardwell, Robin Dittrich, Kevin Gloss, David Kassin
+## Turing 2110 Backend Module 2: [Little Esty Shop Project](https://github.com/turingschool-examples/little-esty-shop)
 
-## Databases
+## Schema
 <img width="788" alt="Screen Shot 2022-01-12 at 8 45 09 AM" src="https://user-images.githubusercontent.com/89048720/149183923-2e245216-e62a-40e8-8974-1ce1b661382a.png">
 
-## Background and Description
+## Description
 
-"Little Esty Shop" is a group project that requires students to build a fictitious e-commerce platform where merchants and admins can manage inventory and fulfill customer invoices.
+"Little Esty Shop" is a group project that was built to simulate a fictitious e-commerce platform where merchants and admins can manage inventory and fulfill customer invoices. 
 
 ## Learning Goals
 - Practice designing a normalized database schema and defining model relationships
@@ -16,29 +15,22 @@ Kelly Anderson, Craig Cardwell, Robin Dittrich, Kevin Gloss, David Kassin
 - Utilize advanced active record techniques to perform complex database queries
 - Practice consuming a public API while utilizing POROs as a way to apply OOP principles to organize code
 
-## Requirements
-- must use Rails 5.2.x
-- must use PostgreSQL
-- all code must be tested via feature tests and model tests, respectively
-- must use GitHub branching, team code reviews via GitHub comments, and github projects to track progress on user stories
-- must include a thorough README to describe the project
-- must deploy completed code to Heroku
+## Setup/Testing
 
-## Setup
-
-This project requires Ruby 2.7.2.
+This project requires Ruby 2.7.2 and Rails 5.2.6 using PostgreSQL.
 
 * Fork this repository
 * Clone your fork
 * From the command line, install gems and set up your DB:
     * `bundle`
     * `rails db:create`
+    * `rake csv_load:all` (populate the database from pre-made CSV files)
 * Run the test suite with `bundle exec rspec`.
 * Run your development server with `rails s` to see the app in action.
 
-## Phases
-
-1. [Database Setup](./doc/db_setup.md)
-1. [User Stories](./doc/user_stories.md)
-1. [Extensions](./doc/extensions.md)
-1. [Evaluation](./doc/evaluation.md)
+## Authors
+- [Kevin Gloss](https://github.com/kevingloss)
+- [Davin Kassin](https://github.com/dkassin)
+- [Kelly Anderson](https://github.com/kanderson852)
+- [Robin Dittrich](https://github.com/Dittrir)
+- [Craig Cardwell](https://github.com/Eagerlearn)
