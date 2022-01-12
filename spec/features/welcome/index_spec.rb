@@ -16,8 +16,9 @@ RSpec.describe 'welcome page', type: :feature do
 
     it 'has the login names of our team' do
       visit root_path
+      save_and_open_page
 # addeed to make branch
-      expected = WelcomeFacade.new.team_info.logins
+      expected = [["kevingloss", 129], ["Dittrir", 99], ["kanderson852", 41],["dkassin", 30], ["Eagerlearn", 13]]
 
       expect(page).to have_content("User Login: #{expected[0][0]} Commit Count: #{expected[0][1]}")
       expect(page).to have_content("User Login: #{expected[1][0]} Commit Count: #{expected[1][1]}")
