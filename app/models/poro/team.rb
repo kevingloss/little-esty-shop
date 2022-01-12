@@ -14,7 +14,7 @@ class Team
       if team.include?(contributor[:login])
       inter << contributor[:login]
       inter << contributor[:contributions]
-      team_logins << x
+      team_logins << inter
       end
     end
     team_logins
