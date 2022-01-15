@@ -74,9 +74,9 @@ RSpec.describe "Discount Index Page" do
 
     click_link "Create New Discount"
 
-    fill_in(:percent, with: 57)
-    fill_in(:threshold, with: 43)
-    click_on("Save")
+    fill_in(:discount_percent, with: 57)
+    fill_in(:discount_threshold, with: 43)
+    click_on("Create Discount")
 
     expect(current_path).to eq(merchant_discounts_path(@merchant1))
     expect(page).to have_content("Percent Off: 57%")
