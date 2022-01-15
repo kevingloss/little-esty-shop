@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Admin merchant edit feature" do
+  before :each do
+    seed_db
+  end
+  
   describe 'edit page' do
     it 'has a link to the edit page' do
       visit admin_merchant_path(@merchant_1)

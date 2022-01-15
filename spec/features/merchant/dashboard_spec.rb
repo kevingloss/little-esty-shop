@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Merchant Dashboard Index' do
   describe 'view' do
-    # before(:each) do
-    #   @merchant_1 = Merchant.create!(name: "Frank")
-    # end
+    before :each do
+      seed_db
+    end
 
     it 'displays the name of the Merchant' do
       visit "/merchants/#{@merchant_1.id}/dashboard"
@@ -22,7 +22,7 @@ RSpec.describe 'Merchant Dashboard Index' do
 
     it 'displays a link to merchant invoices index page' do
       visit "/merchants/#{@merchant_1.id}/dashboard"
-# save_and_open_page
+
       expect(page).to have_link("Invoices")
       click_link "Invoices"
       expect(current_path).to eq("/merchants/#{@merchant_1.id}/invoices")

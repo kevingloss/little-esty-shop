@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin Merchant Show' do
+  before :each do
+    seed_db
+  end
+  
   describe 'view' do
 
     it 'I see the name of that merchant' do

@@ -6,6 +6,9 @@
 require 'rails_helper'
 
 RSpec.describe "Merchant invoice index" do
+  before :each do
+    seed_db
+  end
 
   it 'I see all of the invoices that include at least one of my merchants items' do
     visit merchant_invoices_path(@merchant_1)
