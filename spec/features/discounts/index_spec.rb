@@ -55,6 +55,7 @@ RSpec.describe "Discount Index Page" do
     @d2 = Discount.create!(merchant_id: @merchant1.id, percent: 50, threshold: 8)
     @d3 = Discount.create!(merchant_id: @merchant1.id, percent: 75, threshold: 10)
     @d4 = Discount.create!(merchant_id: @merchant1.id, percent: 10, threshold: 2)
+    @d5 = Discount.create!(merchant_id: @merchant2.id, percent: 30, threshold: 3)
   end
 
   it 'links from the merchant dashboard' do
@@ -72,5 +73,7 @@ RSpec.describe "Discount Index Page" do
       expect(page).to have_content("Percent Off: 25%")
       expect(page).to have_content("Quantity Threshold: 5")
     end
+
+    expect(page).to_not have_content(@d5.percent)
   end
 end
