@@ -5,7 +5,7 @@
 <% @merchant.discounts.each do |discount| %>
   <section id="discount-<%= discount.id %>">
     <li>
-      Percent Off: <%= discount.percent %>% |
+      Percentage Discount: <%= discount.percent %>% |
       Quantity Threshold: <%= discount.threshold %>
       <%= link_to "See More Details", merchant_discount_path(@merchant, discount) %>
     </li>
