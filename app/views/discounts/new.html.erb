@@ -1,0 +1,14 @@
+<h1>New Discount</h1>
+
+<%= form_with model: @discount, local: true do |f| %>
+  <p>
+    <%= f.label :percent %>
+    <%= f.number_field :percent %>
+  </p>
+  <p>
+    <%= f.label :threshold %>
+    <%= f.number_field :threshold %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
