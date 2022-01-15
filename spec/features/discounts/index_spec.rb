@@ -63,6 +63,14 @@ RSpec.describe "Discount Index Page" do
     click_link "View All Discounts"
 
     expect(current_path).to eq(merchant_discounts_path(@merchant1))
-    save_and_open_page
+  end
+
+  it 'has all the bulk discounts with attributes for the merchant' do
+    visit merchant_discounts_path(@merchant1)
+
+    within("#discount-#{@d1.id}") do
+      expect(page).to have_content("Percent Off: 25%")
+      expect(page).to have_content("Quantity Threshold: 5")
+    end
   end
 end
