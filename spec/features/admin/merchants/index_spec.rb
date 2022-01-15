@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin Merchant Index' do
+  before :each do
+    seed_db
+  end
+
   describe 'view' do
 
     it 'I see the name of each merchant in the system' do
@@ -56,7 +60,7 @@ RSpec.describe 'Admin Merchant Index' do
       new_invoice_4.transactions.create!(credit_card_number: "1111 1111 1111 1111", result: "success")
 
       visit "/admin/merchants"
-      
+
       within("#top_five_merchants") do
         expect(merchant_2.name).to appear_before(merchant_3.name)
         expect(merchant_3.name).to appear_before(merchant_4.name)

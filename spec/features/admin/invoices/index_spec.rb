@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin Invoices Index' do
+  before :each do
+    seed_db
+  end
+  
   describe 'view' do
 
     it 'I see the name of each invoice in the system' do
@@ -12,7 +16,7 @@ RSpec.describe 'Admin Invoices Index' do
 
     it 'Each id links to the admin invoice show page' do
       visit "/admin/invoices"
-      
+
       click_link "#{@invoice_1.id}"
       expect(current_path).to eq("/admin/invoices/#{@invoice_1.id}")
     end

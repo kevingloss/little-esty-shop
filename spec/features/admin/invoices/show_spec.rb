@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin Invoices Show' do
+  before :each do
+    seed_db
+  end
+  
   describe 'view' do
 
     it 'I see information related to that invoice' do

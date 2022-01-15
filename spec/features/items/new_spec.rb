@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Items New Page' do
+  before :each do
+    seed_db
+  end
+  
   describe 'view' do
     it 'displays to the user that they are on the Create a New Item Page' do
       visit "/merchants/#{@merchant_1.id}/items/new"

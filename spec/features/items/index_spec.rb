@@ -2,6 +2,9 @@ require 'rails_helper'
 ## i had to remove the before each here because we needed the complete dataset to run the more
 ## complex tests. I commented out and didn't delete anything. all tests pass.
 RSpec.describe "Merchant item index" do
+  before :each do
+    seed_db
+  end
 
   it 'I see a list of the names of all of my items' do
     visit "/merchants/#{@merchant_1.id}/items"

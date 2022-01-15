@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin Dashboard Index' do
+  before :each do
+    seed_db
+  end
+  
   describe 'view' do
 
     it 'I see a header indicating that I am on the admin dashboard' do
