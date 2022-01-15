@@ -63,5 +63,6 @@ RSpec.describe "Discount Index Page" do
     click_link "View All Discounts"
 
     expect(current_path).to eq(merchant_discounts_path(@merchant1))
+    save_and_open_page
   end
 end
