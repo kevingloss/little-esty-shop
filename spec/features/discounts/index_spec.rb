@@ -76,4 +76,18 @@ RSpec.describe "Discount Index Page" do
 
     expect(page).to_not have_content(@d5.percent)
   end
+
+  it 'has a link to destroy each discount and refresh th page' do
+    visit merchant_discounts_path(@merchant1)
+    save_and_open_page
+    within("#discount-#{@d1.id}") do
+      expect(page).to have_content("Percentage Discount: 25%")
+      expect(page).to have_content("Quantity Threshold: 5")
+      click_link "Delete this Discount"
+    end
+
+    expect(current_path).to eq(merchant_discounts_path(@merchant1))
+    expect(page).to_not have_content("Percentage Discount: 25%")
+    expect(page).to_not have_content("Quantity Threshold: 5")
+  end
 end
