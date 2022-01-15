@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin Merchant Index' do
+  before :each do
+    seed_db
+  end
+  
   describe 'new' do
 
     it 'shows a form to create a new merchant and sends back to merchant index' do

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Merchant do
+  before :each do
+    seed_db
+  end
+
   describe 'validations' do
     it { should validate_presence_of :name }
   end
@@ -20,10 +24,6 @@ RSpec.describe Merchant do
       expect(@merchant_1.items_ready_to_ship).to eq(packaged_items.sort)
     end
 
-    # top five items ranked by total revenue generated
-    # invoice_item_revenue = invoice_item.unit_price * invoice_item.quantity
-    # invoice revenue = sum of all invoice items
-    # only invoices with at least one successful transaction should count to revenue
     it '#top_five_items by revenue' do
       expect(@merchant_1.top_five_items).to eq([@item_4, @item_7, @item_10, @item_6, @item_5])
     end

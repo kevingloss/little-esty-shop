@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Merchant invoice show" do
+  before :each do
+    seed_db
+  end
+  
   it 'shows all the information relation to the invoice' do
     visit merchant_invoice_path(@merchant_1, @invoice_1)
 
