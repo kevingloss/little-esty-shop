@@ -69,7 +69,7 @@ RSpec.describe "Discount Show Page" do
   end
 
   it 'has the threshold and percentage discount' do
-    visit merchant_discounts_path(@merchant1)
+    visit merchant_discount_path(@merchant1, @d1)
 
     expect(page).to have_content(@d1.threshold)
     expect(page).to have_content(@d1.percent)
