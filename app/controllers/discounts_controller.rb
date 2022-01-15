@@ -20,6 +20,10 @@ class DiscountsController < ApplicationController
     redirect_to model: merchant
   end
 
+  def destroy
+    # require 'pry'; binding.pry
+  end
+
   private
   def discount_params
     params.require(:discount).permit(:merchant_id, :percent, :threshold)
