@@ -63,6 +63,6 @@ RSpec.describe "Discount Index Page" do
 
     click_link "Create New Discount"
 
-    expect(current_path).to eq(merchant_discounts_path(@merchant1), method: :post)
+    expect(current_path).to eq(new_merchant_discount_path(@merchant1))
   end
 end
