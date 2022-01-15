@@ -2,9 +2,13 @@ require 'csv'
 
 namespace :csv_load do
   desc "load all csv data"
-  task all: [:customers, :invoices, :merchants, :items, :invoice_items, :transactions] do
-    ActiveRecord::Base.connection.tables.each do |t|
-      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+  task setup: [:environment, 'db:drop', 'db:create', 'db:migrate'] do
+    if !Rails.env.test?
+      task all: [:customers, :invoices, :merchants, :items, :invoice_items, :transactions] do
+        ActiveRecord::Base.connection.tables.each do |t|
+          ActiveRecord::Base.connection.reset_pk_sequence!(t)
+        end
+      end
     end
   end
 
