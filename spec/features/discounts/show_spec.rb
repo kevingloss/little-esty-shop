@@ -68,4 +68,12 @@ RSpec.describe "Discount Show Page" do
     expect(current_path).to eq(merchant_discount_path(@merchant1, @d1))
   end
 
+  it 'has the threshold and percentage discount' do
+    visit merchant_discounts_path(@merchant1)
+
+    expect(page).to have_content(@d1.threshold)
+    expect(page).to have_content(@d1.percent)
+    expect(page).to_not have_content(@d2.threshold)
+    expect(page).to_not have_content(@d2.percent)
+  end
 end
