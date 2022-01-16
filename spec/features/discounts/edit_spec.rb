@@ -76,7 +76,6 @@ RSpec.describe "Discount Edit Page" do
     click_button :commit
 
     expect(current_path).to eq(merchant_discount_path(@merchant1, @d1))
-    # save_and_open_page
     expect(page).to have_content("Bulk Discount Quantity Threshold: 10")
     expect(page).to have_content("Bulk Discount Percentage Discount: 30")
   end
