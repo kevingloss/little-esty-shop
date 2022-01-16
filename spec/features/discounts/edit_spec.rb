@@ -64,8 +64,8 @@ RSpec.describe "Discount Edit Page" do
     click_link 'Edit Discount'
 
     expect(current_path).to eq(edit_merchant_discount_path(@merchant1, @d1))
-    expect(page).to have_field("percent", :value => "25")
-    expect(page).to have_field("threshold", :value => "5")
+    expect(page).to have_field(:discount_percent, with: 25)
+    expect(page).to have_field(:discount_threshold, with: 5)
   end
 
 end
