@@ -68,4 +68,15 @@ RSpec.describe "Discount Edit Page" do
     expect(page).to have_field(:discount_threshold, with: 5)
   end
 
+  it 'it redirects to the show page with the updated attributes' do
+    visit edit_merchant_discount_path(@merchant1, @d1)
+
+    fill_in(:discount_percent, with: 30)
+    fill_in(:discount_threshold, with: 10)
+    click_button :commit
+
+    expect(current_path).to eq(merchant_discount_path(@merchant1, @d1))
+    expect(page).to have_content("Bulk Discount Quantity Threshold: #{@d1.threshold}")
+    expect(page).to have_content("Bulk Discount Percentage Discount: #{@d1.percent}")
+  end
 end
