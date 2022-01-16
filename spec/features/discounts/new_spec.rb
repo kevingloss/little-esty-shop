@@ -69,7 +69,7 @@ RSpec.describe "Discount New Page" do
   it 'can create a new discount' do
     visit merchant_discounts_path(@merchant1)
 
-    expect(page).to_not have_content("Percent Off: 57%")
+    expect(page).to_not have_content("Percentage Discount: 57%")
     expect(page).to_not have_content("Quantity Threshold: 43")
 
     click_link "Create New Discount"
@@ -79,7 +79,7 @@ RSpec.describe "Discount New Page" do
     click_on("Create Discount")
 
     expect(current_path).to eq(merchant_discounts_path(@merchant1))
-    expect(page).to have_content("Percent Off: 57%")
+    expect(page).to have_content("Percentage Discount: 57%")
     expect(page).to have_content("Quantity Threshold: 43")
   end
 end
