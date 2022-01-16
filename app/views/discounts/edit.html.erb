@@ -1,14 +1,5 @@
 <h1><%= "Edit Discount ##{@discount.id}" %></h1>
 
-<%= form_with model: [@discount.merchant, @discount], local: true do |f| %>
-  <hr>
-  <p>
-    <%= f.label :percent %>
-    <%= f.text_field :percent %>
-  </p>
-  <p>
-    <%= f.label :threshold %>
-    <%= f.number_field :threshold %>
-  </p>
-  <%= f.submit %>
-<% end %>
+<%= render partial: 'form', locals: {
+  models: [@discount.merchant, @discount]
+} %>

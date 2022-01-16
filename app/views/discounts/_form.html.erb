@@ -1,0 +1,12 @@
+<%= form_with model: models, local: true do |f| %>
+  <hr>
+  <p>
+    <%= f.label :percent %>
+    <%= f.text_field :percent %>
+  </p>
+  <p>
+    <%= f.label :threshold %>
+    <%= f.number_field :threshold %>
+  </p>
+  <%= f.submit %>
+<% end %>
