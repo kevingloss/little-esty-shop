@@ -8,7 +8,6 @@ class DiscountsController < ApplicationController
   end
 
   def new
-    # require 'pry'; binding.pry
     merchant = Merchant.find(params[:merchant_id])
     @discount = merchant.discounts.new
   end
@@ -21,7 +20,10 @@ class DiscountsController < ApplicationController
   end
 
   def destroy
-    # require 'pry'; binding.pry
+    merchant = Merchant.find(params[:merchant_id])
+    Discount.destroy(params[:id])
+
+    redirect_to merchant_discounts_path(merchant)
   end
 
   private
