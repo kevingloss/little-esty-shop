@@ -61,7 +61,7 @@ RSpec.describe "Merchant invoice show" do
     expect(page).to have_content(h.number_to_currency(@invoice_4.total_merchant_revenue(@merchant_1)/100, precision: 0))
   end
 
-  xit 'shows the total discounted revenue' do
+  it 'shows the total discounted revenue' do
     @merchant_2 = Merchant.create!(name: "Mike")
 
     @d1 = Discount.create!(merchant_id: @merchant_1.id, percent: 25, threshold: 10)
