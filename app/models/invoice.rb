@@ -17,12 +17,12 @@ class Invoice < ApplicationRecord
     invoice_items.sum("unit_price * quantity")
   end
 
-# this one works, but isn't merchant specific
-#   def total_discounted_revenue
-#     invoice_items.sum do |ii|
-#       ii.discounted_ii_revenue
-#     end
-#   end
+# this one works, but feels like too much ruby
+  def total_discounted_revenue
+    invoice_items.sum do |ii|
+      ii.discounted_ii_revenue
+    end
+  end
 
   def total_merchant_revenue(merchant)
     merchant_items(merchant).sum("invoice_items.unit_price * invoice_items.quantity")
