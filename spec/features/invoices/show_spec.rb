@@ -57,20 +57,14 @@ RSpec.describe "Merchant invoice show" do
 
   it 'I see the total revenue that will be generated from all of my items on the invoice' do
     visit merchant_invoice_path(@merchant_1, @invoice_4)
+
     expect(page).to have_content("Total Revenue")
     expect(page).to have_content(h.number_to_currency(@invoice_4.total_merchant_revenue(@merchant_1)/100, precision: 0))
   end
 
   it 'shows the total discounted revenue' do
-    @merchant_2 = Merchant.create!(name: "Mike")
-    @d5 = Discount.create!(merchant_id: @merchant_2.id, percent: 30, threshold: 3)
     @item_11 = @merchant_2.items.create!(name: "Item_11", description: "Description_11", unit_price: 150)
     @invoice_4.invoice_items.create!(item_id: @item_11.id, quantity: 5, unit_price: @item_11.unit_price, status: 1)
-
-    @d1 = Discount.create!(merchant_id: @merchant_1.id, percent: 25, threshold: 10)
-    @d2 = Discount.create!(merchant_id: @merchant_1.id, percent: 50, threshold: 20)
-    @d3 = Discount.create!(merchant_id: @merchant_1.id, percent: 75, threshold: 100)
-    @d4 = Discount.create!(merchant_id: @merchant_1.id, percent: 10, threshold: 5)
 
     @invoice_4.invoice_items.create!(item_id: @item_5.id, quantity: 20, unit_price: 100, status: 0)
     @invoice_4.invoice_items.create!(item_id: @item_7.id, quantity: 7, unit_price: 200, status: 0)
@@ -80,5 +74,21 @@ RSpec.describe "Merchant invoice show" do
     visit merchant_invoice_path(@merchant_1, @invoice_4)
 
     expect(page).to have_content(h.number_to_currency(@invoice_4.merchant_discounted_revenue(@merchant_1)/100, precision: 0))
+  end
+
+  it 'links to the discount show page' do
+    ii = @invoice_4.invoice_items.create!(item_id: @item_5.id, quantity: 20, unit_price: 100, status: 0)
+    ii_1 = @invoice_4.invoice_items.create!(item_id: @item_2.id, quantity: 1, unit_price: 400, status: 0)
+
+    visit merchant_invoice_path(@merchant_1, @invoice_4)
+
+    within("#invoice_item-#{ii_1.id}") do
+      expect(page).to have_no_link("View Discount")
+    end
+
+    within("#invoice_item-#{ii.id}") do
+      click_link 'View Discount'
+      expect(current_path).to eq(merchant_discount_path(@merchant_1, @d3))
+    end
   end
 end
