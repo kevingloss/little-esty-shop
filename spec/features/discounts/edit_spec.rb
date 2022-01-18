@@ -76,8 +76,20 @@ RSpec.describe "Discount Edit Page" do
     click_button :commit
 
     expect(current_path).to eq(merchant_discount_path(@merchant1, @d1))
-    # save_and_open_page
     expect(page).to have_content("Bulk Discount Quantity Threshold: 10")
     expect(page).to have_content("Bulk Discount Percentage Discount: 30")
+  end
+
+  it 'throws errors for invalid input' do
+    visit edit_merchant_discount_path(@merchant1, @d1)
+
+    fill_in(:discount_percent, with: 110)
+    fill_in(:discount_threshold, with: 0)
+    click_button :commit
+
+    expect(current_path).to eq(edit_merchant_discount_path(@merchant1, @d1))
+
+    expect(page).to have_content("Percent must be less than 100")
+    expect(page).to have_content("Threshold must be greater than 0")
   end
 end

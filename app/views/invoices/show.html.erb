@@ -3,14 +3,16 @@
   <p>Invoice #:<%= @invoice.id %></p>
   <p>Invoice Status:<%= @invoice.status %></p>
   <p>Invoice created at:<%= @invoice.created_at.strftime("%A, %B %d, %Y") %></p>
-  <p>Total Revenue: <%= number_to_currency(@invoice.total_revenue/100, precision: 0) %></p>
+  <p>Total Revenue: <%= number_to_currency(@invoice.total_merchant_revenue(@merchant)/100, precision: 0) %></p>
+  <p>Total Discounted Revenue: <%= number_to_currency(@invoice.merchant_discounted_revenue(@merchant)/100, precision: 0) %></p>
   <p>Customer first name:<%= @invoice.customer.first_name %></p>
   <p>Customer last name:<%= @invoice.customer.last_name %></p>
 
 <h2>Items on invoice</h2>
 <hr>
 
-<% @invoice.invoice_items.each do |invoice_item| %>
+<% @invoice.merchant_items(@merchant).each do |invoice_item| %>
+  <section id="invoice_item-<%= invoice_item.id %>">
   <h3>Name: <%= invoice_item.item.name %> </h3>
   <p>Quantity: <%= invoice_item.quantity %></p>
   <p>Price: <%= number_to_currency(invoice_item.unit_price/100, precision: 0) %></p>
@@ -20,5 +22,9 @@
       <%= form.select :status, [:pending, :packaged, :shipped], selected: invoice_item.status %>
       <%= form.submit "Update Item Status" %>
     <% end %>
-  </p> 
+  </p>
+  <% if invoice_item.discount_applied %>
+    <%= link_to 'View Discount', merchant_discount_path(@merchant, invoice_item.discount_applied) %>
+  <% end %>
+</section>
 <% end %>
