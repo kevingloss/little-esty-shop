@@ -1,5 +1,6 @@
 <%= link_to "Items", "/merchants/#{@merchant.id}/items" %>
 <%= link_to "Invoices", merchant_invoices_path(@merchant) %>
+<%= link_to "View All Discounts", merchant_discounts_path(@merchant) %>
 
 <h1><%= @merchant.name %></h1>
 
@@ -15,5 +16,3 @@
       <p>Created on: <%= invoice.created_at.strftime("%A, %B %d, %Y") %></p>
     <% end %>
 <% end %>
-
-<%= link_to "View All Discounts", merchant_discounts_path(@merchant) %>
