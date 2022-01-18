@@ -82,4 +82,24 @@ RSpec.describe "Discount New Page" do
     expect(page).to have_content("Percentage Discount: 57%")
     expect(page).to have_content("Quantity Threshold: 43")
   end
+
+  it 'throws errors for invalid input' do
+    visit merchant_discounts_path(@merchant1)
+
+    click_link "Create New Discount"
+
+    fill_in(:discount_percent, with: 110)
+    fill_in(:discount_threshold, with: 43)
+    click_on("Create Discount")
+
+    expect(current_path).to eq(new_merchant_discount_path(@merchant1))
+    expect(page).to have_content("Percent must be less than 100")
+
+    fill_in(:discount_percent, with: -1)
+    fill_in(:discount_threshold, with: 0)
+    click_on("Create Discount")
+
+    expect(page).to have_content("Percent must be greater than 0")
+    expect(page).to have_content("Threshold must be greater than 0")
+  end
 end

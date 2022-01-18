@@ -14,9 +14,14 @@ class DiscountsController < ApplicationController
 
   def create
     merchant = Merchant.find(params[:merchant_id])
-    merchant.discounts.create(discount_params)
+    discount = merchant.discounts.new(discount_params)
 
-    redirect_to model: merchant
+    if discount.save
+      redirect_to model: merchant
+    else
+      flash[:error] = discount.errors.full_messages
+      redirect_to new_merchant_discount_path(merchant)
+    end
   end
 
   def edit
@@ -25,9 +30,12 @@ class DiscountsController < ApplicationController
 
   def update
     discount = Discount.find(params[:id])
-    discount.update(discount_params)
-
-    redirect_to model: [discount.merchant, discount]
+    if discount.update(discount_params)
+      redirect_to model: [discount.merchant, discount]
+    else
+      flash[:error] = discount.errors.full_messages
+      redirect_to edit_merchant_discount_path(discount.merchant, discount)
+    end
   end
 
   def destroy
